@@ -1,6 +1,6 @@
 <p align="center">
     <br>
-    <img src="src/portada.jpeg"/>
+    <img src="assets/portada.jpeg"/>
     </a>
     <br>
 </p>
