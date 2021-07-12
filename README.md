@@ -26,4 +26,6 @@
 - ⬜️ Despliegue *Chatbot ACECOM*
 
 ## ℹ️ Introducción
-***Chatbot ACECOM*** es un sistema automático de conversación basado en Deep Learning usando técnicas de NLP, construido sobre Pytorch. 
+***Chatbot ACECOM*** es un sistema automático de conversación basado en Deep Learning usando técnicas de NLP, construido sobre Pytorch.
+
+[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AcecomFCUNI/Chatbot-Acecom/blob/master/src/chatbot_de_voz.ipynb)
