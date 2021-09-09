@@ -13,11 +13,11 @@
 [![pytorch](https://img.shields.io/badge/PyTorch-1.7-EE4C2C.svg?style=flat&logo=pytorch)](https://pytorch.org)
 
 ## 🆕 Actualización
-- 19/03/21: README actualizado
+- 08/09/21: Tutoriales actualizados
 
  TODO:
-- ⬜️ Introducción a NLP con enfoque en chatbots
-- ⬜ Búsqueda de literatura
+- ✔️ Introducción a NLP con enfoque en chatbots
+- ✔️ Búsqueda de literatura
 - ⬜️ Obtención y tratamiento de los datos de entrenamiento
 - ⬜️ Creación del modelo
 - ⬜️ Entrenamiento y optimización del modelo
