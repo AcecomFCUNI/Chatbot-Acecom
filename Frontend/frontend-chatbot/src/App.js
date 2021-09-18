@@ -20,7 +20,7 @@ function App() {
   const [inactive, setInactive] = useState(false);
   return (
     <div className="__main">
-      {/* <Router>
+      <Router>
         <SideMenu
           onCollapse={(inactive) => {
             console.log(inactive);
@@ -42,7 +42,7 @@ function App() {
                   ))
                 : null}
             </>
-          ))} */}
+          ))} 
 
           {/* <Switch>
             <Route exact path={"/"}>
@@ -73,10 +73,10 @@ function App() {
               <Design2 />
             </Route>
           </Switch> */}
-        {/* </div>
-      </Router> */}
-      {/* <Nav /> */}
-      <ChatBody />
+        </div>
+      </Router> 
+      {/* <Nav />
+      <ChatBody /> */}
     </div>
   );
 }
