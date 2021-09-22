@@ -1,4 +1,6 @@
 .vscode
-model/chatbotN02
-model/chatbotN01
+Backend/request.http
+Backend/model/chatbotN02
+Backend/model/chatbotN01
+Backend/model/chatbotN03/data.pth
 venv
