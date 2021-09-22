@@ -1,6 +1,6 @@
 import re
 import string
-
+from model.chatbotN03.chat import chat
 
 class NLP:
     def __init__(self):
@@ -21,7 +21,7 @@ class NLP:
             }
 
         elif modelId == '3':
-            query += "  RETORNANDO" + modelId
+            query = chat(query)
             return {
                 "type": "response",
                 "data": query,
