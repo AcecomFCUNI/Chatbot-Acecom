@@ -1,0 +1,109 @@
+{
+      "intents": [
+        {
+          "tag":"saludo",
+          "patterns": [
+            "Holi",
+            "Hola",
+            "Qué tal?",
+            "Quien está ahí?",
+            "Si hay alguien, hable",
+            "Buen dia",
+            "Buenos dias"
+          ],
+          "responses": [
+            "Hola  (￣･ω･￣)",
+            "Holi ( ･ω･)ﾉ",
+            "ヾ(´￢｀)ﾉ",
+            "Hola, gracias por hablarme",
+            "Hola, gracias por venir a visitarme",
+            "Hola, en que puedo ayudarte?",
+            "Hola, que necesitas?"
+          ]
+        },
+        {
+          "tag": "despedida",
+          "patterns": ["Nos vemos","Adiós", "Nos vemos luego", "Hasta la próxima", "Hasta luego. Cuidese"],
+          "responses": [
+            "Hasta luego, gracias por tu visita",
+            "Ten un buen dia",
+            "Hasta otra oportunidad uwu",
+            "Hasta luego",
+            "Hasta la proxima",
+            "Vaya con Jesús. Adiós",
+            "Chau. Joven padawan",
+            "Nos vemos pronto"
+          ]
+        },
+        {
+          "tag": "agradecimiento",
+          "patterns": ["Gracias", "Gracias por la ayuda", "Que útil eres", "Muchas gracias!"],
+          "responses": [
+            "Siempre es bueno ser util :D", 
+            "A la orden mi chamo!", 
+            "Un gusto ayudar"]
+        },
+        {
+          "tag": "gustos",
+          "patterns": ["Que te gusta?", "Tienes alguna preferencia?","Qué te encanta?"],
+          "responses": [
+            "!!Los cortes militares se ven genial!!,¿Porqué no lo entiendes?,Tenemos que hacer que vuellvan a la moda.",
+            "Mi anime favorito es My Melody",
+            "Me gusta leer libros como los de Murakami Haruki",
+            "Me gusta la poesía.",
+            "Me gusta el dolor,¿No crees que es tranquilizador?",
+            "Me gustaria un abrazo y si es por detrás se siente el doble mejor",
+            "Me encanta los headpats..."
+            ]
+        },
+        {
+          "tag": "aleatorio",
+          "patterns": [
+            "Que te recomiendas",
+            "Dame un recomendación",
+            "Recomiendame algo",
+            "Cuentame algo",
+            "Dime que piensas",
+            "Dime alguna frase"
+                  ],
+          "responses": [
+            "La justicia no demanda recompensa.Solo podrias tocar el corazón de las personas sino estas en busca de algo a cambio.",
+            "El sonido de un corazón latiendo se siente como si estuvieras en el vientre de una madre es muy relajante.",
+            "Escuche que puedes aliviar el estrés escribiendo e kanji de 'persona' y comiendatela.",
+            "Dicen que copiar sutras es una buena forma de relajación.",
+            "Si ambos empezamos a tener pensamientos impuros\nvamos a bucear en el infierno junto :D.",
+            "Deberias comer más verduras",
+            "Un corazón roto dura mucho tiempo para algunos.\nHe oído que hay amores que no se pueden olvidar ni si quiera cuando te haces adulto o hasta la muerte\nConsiderando eso....\nDebería esperar unos dos años."
+          ]
+        },
+        {
+          "tag": "divertido",
+          "patterns": [
+            "Dime un chiste",
+            "Divierteme",
+            "digame algo divertido"
+          ],
+          "responses": [
+            "¿Por qué está feliz la escoba? \n -- Porque ba-rriendo",
+            "¿Con qué juega un bebé vampiro? Con glóbulos rojos.",
+            "¡Estoy hecho pedazos! Firmado: Frankenstein.",
+            "A veces la vida no es como uno quiere."
+          ]
+        },
+        {
+          "tag": "poemas",
+          "patterns": [
+            "Dime un poema",
+            "Cuentame un poema",
+            "Me contarias un poema?",
+            "Te sabes algun poema?"
+          ],
+          "responses": [
+            "La Orgullosa estrella colgaba a la distancia en la noche.\nReluciente,chispiante,brillando y brillando.\nArroja sus rayos cruzando montañas y Mares.\nBuscando a sus Gemelos hasta brillar sobre mí.\nEones eliminados y años luz apartados\nUna pequeña estrella fugas que no puede reparar un corazon.\nDura un latido antes de que caiga del cielo.\nDesapareciendo dentro de la oscuridad sin decir adiós.\nJusto como yo,desaparece en la noche.\nDejando nada para mostrar su antigua Luz.\nLa via láctea es una fría y silenciosa\nTumba,por cualquier ferviente deseo,rogando ser salvada\nLa Estrella Tintiena en el gran lejano cielo\nY una vez más,en esta solitaria noche,deseo una Estrella.",
+            "Una cigueña negra inicia su canción\nEL inicio del centerio festival,\nSembraremos las semillas de la col marchita\nComo la nueva cigueña vuela en el aire\nHumo azul se eleva y cae\nHumo verde cubre la ciudad\nPorfin no tendre ninguna pesadilla más\nEl sonido de las campanas es eterno\nCuando la cigueña negra canta su canción\nLas grises figuras son eliminadas\nAhora ya no queda nadie.",
+            "El cuerpo es tan vacío,\nel vacío no es más que el cuerpo.\nEl cuerpo está vacío,\ny el vacío es el cuerpo.",
+            "Esas emociones tan 'vacías'.\nEl dolor solo existe en tu cabeza, pero no en la realidad.\n'El mantra erradica todo el sufrimiento,es es una verdad absoluta'\nEl sufrimiento está vacío y no tiene forma."
+          ]
+        }
+      ]
+    }
