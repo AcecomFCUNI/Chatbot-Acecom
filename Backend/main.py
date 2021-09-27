@@ -13,6 +13,7 @@ from nlp import NLP
 app = FastAPI(
     title="chatbot", description="Chatbot diseñado por AcecomIA", version="0.0.1"
 )
+
 nlp = NLP()
 
 
