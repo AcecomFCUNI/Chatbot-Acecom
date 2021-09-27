@@ -162,6 +162,6 @@ data = {
     "tags":tags
 }
 
-FILE = "Backend/model/chatbotN03/data.pth"
+FILE = "../Backend/model/chatbotN03/data.pth"
 torch.save(data, FILE)
 print(f'El entrenamiento ha terminado tu archivo {FILE} se ha guardado.')

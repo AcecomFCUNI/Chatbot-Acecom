@@ -1,0 +1,106 @@
+{
+      "intents": [
+        {
+          "tag":"saludo",
+          "patterns": [
+            "Holi",
+            "Hola",
+            "Qué tal?",
+            "Quien está ahí?",
+            "Si hay alguien, hable",
+            "Buen dia",
+            "Buenos dias",
+            "Buenas noches",
+            "Buenas tardes"
+          ],
+          "responses": [
+            "Hola  (￣･ω･￣)",
+            "Holi ( ･ω･)ﾉ",
+            "ヾ(´￢｀)ﾉ",
+            "Hola, gracias por hablarme",
+            "Hola, gracias por venir chatear conmigo.",
+            "Hola, en que puedo ayudarte?",
+            "Hola, que necesitas?"
+          ]
+        },
+        {
+          "tag": "despedida",
+          "patterns": [
+              "Nos vemos",
+              "Adiós", 
+              "Nos vemos luego", 
+              "Hasta la próxima", 
+              "Hasta luego. Cuidese",
+              "Hasta pronto"
+            ],
+          "responses": [
+            "Hasta luego, gracias por tu visita",
+            "Ten un buen dia",
+            "Hasta otra oportunidad.",
+            "Hasta luego",
+            "Hasta la proxima",
+            "Vaya con Jesús. Adiós",
+            "Nos vemos pronto"
+          ]
+        },
+        {
+          "tag": "agradecimiento",
+          "patterns": [
+            "Gracias", 
+            "Gracias por la ayuda", 
+            "Que útil eres", 
+            "Muchas gracias!"
+        ],
+          "responses": [
+            "Me encanta ayudar :D", 
+            "A la orden mi chamo!", 
+            "Un gusto ayudar"
+          ]
+        },
+        {
+          "tag": "gustos",
+          "patterns": ["Que te gusta?", "Tienes alguna preferencia?","Qué te encanta?"],
+          "responses": [
+            "Me gusta la poesía.",
+            "Me gusta el dolor,¿No crees que es tranquilizador?",
+            "Me encanta la inteligencia Artificial",
+            "Amo los lunes."
+            ]
+        },
+        {
+          "tag": "divertido",
+          "patterns": [
+            "Dime un chiste",
+            "Divierteme",
+            "digame algo divertido"
+          ],
+          "responses": [
+            "A veces la vida no es como uno quiere."
+          ]
+        },
+        {
+            "tag":"odio",
+            "patterns": [
+                "No sirves!!",
+                "Eres poco útil",
+                "No respondes bien los mensajes",
+                "Eres poco efectivo"    
+            ],
+            "responses":[
+                "Disculpe U_U" ,
+                "Mejorare para mi siguiente versión"
+            ]
+        },
+        {
+            "tag":"ACECOM",
+            "patterns": [
+                "Qué es ACECOM?",
+                "Cuentame de Acecom"   
+            ],
+            "responses":[
+                "Somos un grupo de estudiantes de la facultad de ciencias",
+                "Me contaron que es buen un grupo"
+            ]
+        }
+      ]
+    }

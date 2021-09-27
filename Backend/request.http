@@ -5,5 +5,5 @@ Content-Type: application/json
 
 {
   "modelId": "3",
-  "query": "ACECOM"
+  "query": "cuentame algo"
 }
