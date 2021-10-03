@@ -5,4 +5,5 @@ Backend/model/chatbotN03/data.pth
 *.h5
 Backend/model/chatbotN01/cornell_movie_dialogs_corpus
 venv
+*.tar
 
