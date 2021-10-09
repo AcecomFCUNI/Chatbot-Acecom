@@ -92,7 +92,7 @@ export default function ChatContent(props) {
 
   var executeQuery = async () => {
     let payload = {
-      modelId: "3",
+      modelId: "4",
       query: state.msg,
     };
     const response = await fetch(URL, {
