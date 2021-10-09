@@ -75,8 +75,8 @@ function App() {
           </Switch> */}
         </div>
       </Router> 
-      {/* <Nav />
-      <ChatBody /> */}
+      {/* <Nav /> */}
+      <ChatBody />
     </div>
   );
 }

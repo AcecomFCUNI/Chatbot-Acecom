@@ -4,7 +4,7 @@ import "./chatContent.css";
 import Avatar from "../chatList/Avatar";
 import ChatItem from "./ChatItem";
 
-const URL = "http://localhost:8000/nlp";
+const URL = "https://chatbot-acecom.herokuapp.com/nlp";
 
 export default function ChatContent(props) {
   var messagesEndRef = createRef(null);
