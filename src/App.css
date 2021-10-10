@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -12,16 +14,15 @@ body {
   align-items: center;
   height: 100%;
 }
+
 .__main {
-  max-width: 90%;
-  margin: auto;
-  background-color: #fff;
-  min-height: 80vh;
+  max-width: 95%;
+  background-color: #E0E0E0;
+  min-height: 90vh;
   width: 100%;
   border-radius: 10px;
-  padding: 20px;
+  padding: 0px;
   display: flex;
-  padding-left: 0;
 }
 
 .btn {
@@ -112,7 +113,7 @@ body{
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #333; 
+  background: rgb(85, 85, 85); 
   border-radius: 10px;
   display: none;
 }
@@ -123,19 +124,20 @@ body{
   display: block;
 }
 
-
+/*Panel izquierdo*/
 .side-menu{
   position: fixed;
-  background: #000;
-  width: 300px;
+  background: #112B88;
+  box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
+  width: 550px;
   height: 100%;
   box-sizing: border-box;
-  padding: 30px 20px;
+  padding: 30px 50px;
   transition: width .2s ease-in;
 }
 
 .side-menu.inactive{
-  width: 80px;
+  width: 50px;
 }
 
 .side-menu .top-section{
@@ -154,11 +156,14 @@ body{
 }
 
 .side-menu .top-section .toggle-menu-btn{
-  color: #666;
+  color: rgb(247, 6, 6);
+  width: 30px;
+  height: 30px;
+  background-color: tomato;
   font-size: 20px;
-  position: absolute;
-  top: 50%;
-  right: 0;
+  position: relative;
+  /*top: 100%;*/
+  /*right: 0;*/
   transform: translateY(-50%);
   cursor: pointer;
 }
@@ -196,13 +201,56 @@ body{
   color: #666;
 }
 
+/*Lista de diseño*/
 .side-menu .main-menu .menu-item{
-  color: #333;
+  color: rgb(247, 241, 241);
   text-decoration: none;
-  font-size: 15px;
+  font-size: 25px;
   display: block;
   font-weight: 600;
   cursor: pointer;
+}
+
+/*Lista de botones de Modelos*/
+.side-menu .main-menu .grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  background: rgba(255, 255, 255, 0.29);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  padding: 7px;
+  grid-gap: 10px 10px;
+}
+
+.side-menu .main-menu .grid-item {
+  width: 130px;
+  height: 130px;
+  background: #F0F1F4;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 15px;
+  text-align: center;
+  font-family: Nunito;
+  line-height: 27px;
+  color: rgba(38, 44, 99, 0.92);
+  cursor: pointer;
+}
+
+.side-menu .main-menu .grid-container :hover {
+  background: #FF5574;
+  border: 1px solid #FF002E;
+  box-shadow: inset 0px 0px 10px 3px #9B1D34;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.side-menu .main-menu .circle {
+  background: rgba(15, 28, 63, 0.125);
+  border-radius: 50%;
+  height: 90px;
+  object-fit: cover;
+  width: 90px;
 }
 
 .side-menu .main-menu .menu-item.active{
@@ -213,9 +261,9 @@ body{
 
 
 .side-menu .main-menu{
-  margin: 5px 0;
+  margin: 50px 0;
   position: relative;
-  max-height: 250px;
+  /*max-height: 300px;*/
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -342,12 +390,12 @@ body{
 }
 
 .container{
-  margin-left: 300px;
+  margin-left: 450px;
   transition: margin-left .2s ease-in;
   padding: 50px;
   box-sizing: border-box;
 }
 
 .container.inactive{
-  margin-left: 80px;
+  margin-left: 150px;
 }

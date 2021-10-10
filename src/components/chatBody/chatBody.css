@@ -1,7 +1,8 @@
 .main__chatbody {
   flex-grow: 1;
-  background-color: #f4f3f8;
+  background-color: #FFFFFF;
   border-radius: 10px;
   padding: 15px 20px;
   display: flex;
+  margin: 20px;
 }

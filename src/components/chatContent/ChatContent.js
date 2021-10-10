@@ -4,7 +4,7 @@ import "./chatContent.css";
 import Avatar from "../chatList/Avatar";
 import ChatItem from "./ChatItem";
 
-const URL = "https://chatbot-acecom.herokuapp.com/nlp";
+const URL = "http://localhost:8000/nlp";
 
 export default function ChatContent(props) {
   var messagesEndRef = createRef(null);
@@ -42,7 +42,7 @@ export default function ChatContent(props) {
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
       type: "other",
-      msg: "Finally. What's the plan?",
+      msg: "Finally. What's the plan? jnovnroewnvovb wivnwñoanviwbvoñvb weagte hyrnreeanyrteabae betablwvbrwivbwavbewvbelbvkjleab wubvwvwkjaoibu",
     },
     {
       key: 6,
@@ -92,7 +92,7 @@ export default function ChatContent(props) {
 
   var executeQuery = async () => {
     let payload = {
-      modelId: "4",
+      modelId: "3",
       query: state.msg,
     };
     const response = await fetch(URL, {
@@ -121,7 +121,7 @@ export default function ChatContent(props) {
 
   return (
     <div className="main__chatcontent">
-      <div className="content__header">
+      {/*<div className="content__header">
         <div className="blocks">
           <div className="current-chatting-user">
             <Avatar
@@ -139,11 +139,14 @@ export default function ChatContent(props) {
             </button>
           </div>
         </div>
-      </div>
+      </div>*/}
       <div className="content__body">
         <div className="chat__items">
+          {//Cambio realizado
+          }
           {state.chat.map((itm, index) => {
-            return (
+            if (itm.type == "other"){
+              return (
               <ChatItem
                 animationDelay={index + 2}
                 key={itm.key}
@@ -151,24 +154,34 @@ export default function ChatContent(props) {
                 msg={itm.msg}
                 image={itm.image}
               />
-            );
+              );
+            }
+            else{
+              return (
+                <ChatItem
+                  animationDelay={index + 2}
+                  key={itm.key}
+                  user={itm.type ? itm.type : "me"}
+                  msg={itm.msg}
+                  //image={itm.image}
+                />
+                );
+            }
+            
           })}
           <div ref={messagesEndRef} />
         </div>
       </div>
       <div className="content__footer">
         <div className="sendNewMessage">
-          <button className="addFiles">
-            <i className="fa fa-plus"></i>
-          </button>
           <input
             type="text"
-            placeholder="Escriba un mensaje aquí"
+            placeholder="Escribir mensaje aquí"
             onChange={onStateChange}
             value={state.msg}
           />
           <button className="btnSendMsg" id="sendMsgBtn" onClick={sendQuery}>
-            <i className="fa fa-paper-plane"></i>
+            <i className="fa fa-paper-plane"><div id="triangulo"></div></i>
           </button>
         </div>
       </div>

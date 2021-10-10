@@ -7,9 +7,11 @@ import UserProfile from "../userProfile/UserProfile";
 export default function ChatBody() {
   return (
     <div className="main__chatbody">
-      <ChatList />
+      {//<ChatList />
+      }
       <ChatContent />
-      <UserProfile />
+      {//<UserProfile />
+      }
     </div>
   );
 }

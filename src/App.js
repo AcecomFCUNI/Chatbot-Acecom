@@ -29,7 +29,7 @@ function App() {
         />
 
         <div className={`container ${inactive ? "inactive" : ""}`}>
-          {menuItems.map((menu, index) => (
+          {/*menuItems.map((menu, index) => (
             <>
               <Route key={menu.name} exact={menu.exact} path={menu.to}>
                 <h1>{menu.name}</h1>
@@ -42,7 +42,7 @@ function App() {
                   ))
                 : null}
             </>
-          ))} 
+                ))*/} 
 
           {/* <Switch>
             <Route exact path={"/"}>
@@ -75,8 +75,8 @@ function App() {
           </Switch> */}
         </div>
       </Router> 
-      {/* <Nav /> */}
-      <ChatBody />
+      {/*<Nav />*/}
+      <ChatBody/>
     </div>
   );
 }

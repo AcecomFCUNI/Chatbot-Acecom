@@ -4,43 +4,39 @@ import user from "../assets/user.jpg";
 
 import MenuItem from "./MenuItem";
 
-/**
- * @author
- * @function SideMenu
- **/
 
 // added more menuItems for testing
 export const menuItems = [
   {
-    name: "Dashboard",
-    exact: true,
+    name: "Modelo 1",
+    /*exact: true,
     to: "/",
-    iconClassName: "bi bi-speedometer2",
+    iconClassName: "bi bi-speedometer2",*/
   },
   {
-    name: "Content",
-    exact: true,
+    name: "Modelo 2",
+    /*exact: true,
     to: `/content`,
     iconClassName: "bi bi-speedometer2",
     subMenus: [
       { name: "Courses", to: "/content/courses" },
       { name: "Videos", to: "/content/videos" },
-    ],
+    ],*/
   },
-  { name: "Design", to: `/design`, iconClassName: "bi bi-vector-pen" },
+  { name: "Modelo 3", /*to: `/design`, iconClassName: "bi bi-vector-pen"*/ },
   {
-    name: "Content 2",
-    exact: true,
+    name: "Modelo 4",
+    /*exact: true,
     to: `/content-2`,
     iconClassName: "bi bi-speedometer2",
     subMenus: [
       { name: "Courses", to: "/content-2/courses" },
       { name: "Videos", to: "/content-2/videos" },
-    ],
+    ],*/
   },
-  { name: "Design 2", to: `/design-2`, iconClassName: "bi bi-vector-pen" },
-  { name: "Design 3", to: `/design-3`, iconClassName: "bi bi-vector-pen" },
-  { name: "Design 4", to: `/design-4`, iconClassName: "bi bi-vector-pen" },
+  { name: "Modelo 5", /*to: `/design-2`, iconClassName: "bi bi-vector-pen"*/ },
+  { name: "Modelo 6", /*to: `/design-3`, iconClassName: "bi bi-vector-pen"*/ },
+  { name: "Design 4", /*to: `/design-4`, iconClassName: "bi bi-vector-pen"*/ },
 ];
 
 const SideMenu = (props) => {
@@ -64,6 +60,7 @@ const SideMenu = (props) => {
   /*just a little improvement over click function of menuItem
     Now no need to use expand state variable in MenuItem component
   */
+  /* NO TOCAR!!!!!!!*/
   useEffect(() => {
     let menuItems = document.querySelectorAll(".menu-item");
     menuItems.forEach((el) => {
@@ -80,17 +77,20 @@ const SideMenu = (props) => {
     });
   }, []);
 
+  /* parte izquierda */
   return (
     <div className={`side-menu ${inactive ? "inactive" : ""}`}>
       <div className="top-section">
+        {/*logo*/}
         <div className="logo">
           <img src={logo} alt="webscript" />
         </div>
+        {/* flecha de compresión */}
         <div onClick={() => setInactive(!inactive)} className="toggle-menu-btn">
           {inactive ? (
             <i class="bi bi-arrow-right-square-fill"></i>
           ) : (
-            <i class="bi bi-arrow-left-square-fill"></i>
+            <i className="" ></i>
           )}
         </div>
       </div>
@@ -106,12 +106,32 @@ const SideMenu = (props) => {
       <div className="divider"></div> */}
 
       <div className="main-menu">
+        <div class="grid-container">
+          <div class="grid-item">
+              <div class="circle"></div> Modelo 1 
+          </div>
+          <div class="grid-item">
+              <div class="circle"></div> Modelo 2 
+          </div>
+          <div class="grid-item">
+              <div class="circle"></div> Modelo 3 
+          </div>  
+          <div class="grid-item">
+              <div class="circle"></div> Modelo 4 
+          </div>
+          <div class="grid-item">
+              <div class="circle"></div> Modelo 5 
+          </div>
+          <div class="grid-item">
+              <div class="circle"></div> Modelo 6 
+          </div>  
+      </div>
         <ul>
           {menuItems.map((menuItem, index) => (
             <MenuItem
-              key={index}
-              name={menuItem.name}
-              exact={menuItem.exact}
+              /*key={index}*/
+              /*name={menuItem.name}*/
+              /*exact={menuItem.exact}
               to={menuItem.to}
               subMenus={menuItem.subMenus || []}
               iconClassName={menuItem.iconClassName}
@@ -119,11 +139,11 @@ const SideMenu = (props) => {
                 if (inactive) {
                   setInactive(false);
                 }
-              }}
+              }} */
             />
           ))}
 
-          {/* <li>
+          {/*} <li>
             <a className="menu-item">
               <div className="menu-icon">
                 <i class="bi bi-speedometer2"></i>
@@ -134,8 +154,8 @@ const SideMenu = (props) => {
           <MenuItem
             name={"Content"}
             subMenus={[{ name: "Courses" }, { name: "Videos" }]}
-          />
-          <li>
+            />*/}
+          {/*<li>
             <a className="menu-item">
               <div className="menu-icon">
                 <i class="bi bi-vector-pen"></i>
