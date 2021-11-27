@@ -197,8 +197,9 @@
   border: none;
   outline: none;
   font-family: Poppins;
+  color: #000;
 }
-.sendNewMessage input {
+.dark.sendNewMessage input {
   color: #FFFFFF;
 }
 
