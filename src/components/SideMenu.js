@@ -9,6 +9,7 @@ import fondoComp from "../assets/fondoComp.png";
 import fondoCompDark from "../assets/fondoCompDark.png";
 import lemur from "../assets/lemur.png";
 import MenuItem from "./MenuItem";
+import botAcecom from "../assets/botAcecom.png"
 
 
 // added more menuItems for testing
@@ -119,7 +120,9 @@ const SideMenu = (props) => {
       <div className={`${darkMode ? "dark" : ""} main-menu`}>
         <div className="grid-container">
           <div className={`${darkMode ? "dark" : ""} grid-item`}>
-              <div className="circle"></div> {`${inactive ? "" : "Modelo 1"}` }
+              <div className="circle" style={{background: darkMode ? "#132668" : "#112B88"}}>
+                <img src={botAcecom}/>
+              </div> {`${inactive ? "" : "Modelo 1"}` }
           </div>
           <div className={`${darkMode ? "dark" : ""} grid-item`}>
               <div className="circle"></div> {`${inactive ? "" : "Modelo 2"}` }

@@ -186,6 +186,10 @@ body{
   max-height: 100%;
 }
 
+.side-menu .top-section .logo img:hover{
+  transform: scale(1.01)
+}
+
 .side-menu .toggle-menu-btn{
   width: 0; 
   height: 0; 
@@ -287,22 +291,18 @@ body{
   color: transparent;
 }
 
-.side-menu .main-menu .grid-container :hover {
+.side-menu .main-menu .grid-container .grid-item:hover {
   background: #FF5574;
   border: 1px solid #FF002E;
-  box-shadow: inset 0px 0px 10px 3px #9B1D34;
-  color: #FFFFFF;
-  font-size: 16px;
-}
-
-.side-menu .main-menu .grid-container :hover {
+  box-shadow: inset 0px 0px 5px 1px #9B1D34;
   color: #14214F;
-  font-weight: bold;
+  font-size: 16px;
 }
 
 .side-menu .main-menu .circle {
   background: rgba(15, 28, 63, 0.125);
   border-radius: 50%;
+  overflow: hidden;
   height: 87px;
   object-fit: cover;
   width: 90px;
@@ -312,6 +312,10 @@ body{
   height: 75px;
   object-fit: cover;
   width: 78px;
+}
+
+.circle img{
+  width: 100%;
 }
 
 .side-menu .main-menu .menu-item.active{
