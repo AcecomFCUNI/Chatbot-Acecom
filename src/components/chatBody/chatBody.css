@@ -6,3 +6,7 @@
   display: flex;
   margin: 20px;
 }
+
+.dark.main__chatbody {
+  background-color: #252525;
+}

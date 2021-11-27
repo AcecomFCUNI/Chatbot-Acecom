@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Nav from "./components/nav/Nav";
 import ChatBody from "./components/chatBody/ChatBody";
-import SideMenu, { menuItems } from "./components/SideMenu";
+import SideMenu, {dark} from "./components/SideMenu";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -18,17 +18,22 @@ const Design2 = () => <h1>Design 2</h1>;
 
 function App() {
   const [inactive, setInactive] = useState(false);
+  const [darkMode, setDarkMode] = useState(dark);
+  //const darkMode = dark;
   return (
-    <div className="__main">
+    <div className={`${dark ? "dark" : ""} __main`}>
       <Router>
         <SideMenu
-          onCollapse={(inactive) => {
+          onCollapse={(inactive, dark) => {
             console.log(inactive);
             setInactive(inactive);
+            console.log(dark);
+            setDarkMode(dark);
           }}
         />
-
+        
         <div className={`container ${inactive ? "inactive" : ""}`}>
+          
           {/*menuItems.map((menu, index) => (
             <>
               <Route key={menu.name} exact={menu.exact} path={menu.to}>
@@ -74,9 +79,15 @@ function App() {
             </Route>
           </Switch> */}
         </div>
+      
+        <ChatBody 
+          onCollapse={(dark) => {
+            console.log(dark);
+            setDarkMode(dark);
+          }}
+        />
+        
       </Router> 
-      {/*<Nav />*/}
-      <ChatBody/>
     </div>
   );
 }

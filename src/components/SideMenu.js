@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/logo/webscript.png";
-import user from "../assets/user.jpg";
-
+import logo from "../assets/logo/chatbotAcecom.png";
+import logoDark from "../assets/logo/chatbotAcecomDark.png";
+import logoComp from "../assets/logo/chatbotAcecomp.png";
+import logoCompDark from "../assets/logo/chatbotAcecompDark.png"
+import fondo from "../assets/fondo.png";
+import fondoDark from "../assets/fondoDark.png";
+import fondoComp from "../assets/fondoComp.png";
+import fondoCompDark from "../assets/fondoCompDark.png";
+import lemur from "../assets/lemur.png";
 import MenuItem from "./MenuItem";
 
 
@@ -39,16 +45,18 @@ export const menuItems = [
   { name: "Design 4", /*to: `/design-4`, iconClassName: "bi bi-vector-pen"*/ },
 ];
 
+export let dark = false;
 const SideMenu = (props) => {
   const [inactive, setInactive] = useState(false);
-
+  const [darkMode, setDarkMode] = useState(false);
+  //export const dark = darkMode;
   useEffect(() => {
-    if (inactive) {
-      removeActiveClassFromSubMenu();
-    }
+    //if (inactive, darkMode) {
+    //  removeActiveClassFromSubMenu();
+    //}
 
-    props.onCollapse(inactive);
-  }, [inactive]);
+    props.onCollapse(inactive, dark);
+  }, [inactive, dark]);
 
   //just an improvment and it is not recorded in video :(
   const removeActiveClassFromSubMenu = () => {
@@ -61,7 +69,7 @@ const SideMenu = (props) => {
     Now no need to use expand state variable in MenuItem component
   */
   /* NO TOCAR!!!!!!!*/
-  useEffect(() => {
+  /*useEffect(() => {
     let menuItems = document.querySelectorAll(".menu-item");
     menuItems.forEach((el) => {
       el.addEventListener("click", (e) => {
@@ -75,23 +83,26 @@ const SideMenu = (props) => {
         }
       });
     });
-  }, []);
+  }, []);*/
 
   /* parte izquierda */
   return (
-    <div className={`side-menu ${inactive ? "inactive" : ""}`}>
+    <div className={`${darkMode ? "dark" : ""} side-menu ${inactive ? "inactive" : ""}`}>
+      {/* flecha de compresión */}
+      <div className="fondo">
+        <img src={`${inactive && darkMode ? fondoCompDark : inactive ? fondoComp : darkMode ? fondoDark : fondo}`} alt="fondo"/>
+      </div>
+      <div onClick={() => setInactive(!inactive)} className="toggle-menu-btn">
+        {/*inactive ? (
+          <i class="bi bi-arrow-right-square-fill"></i>
+        ) : (
+          <i className="" ></i>
+        )*/}
+      </div>
       <div className="top-section">
         {/*logo*/}
         <div className="logo">
-          <img src={logo} alt="webscript" />
-        </div>
-        {/* flecha de compresión */}
-        <div onClick={() => setInactive(!inactive)} className="toggle-menu-btn">
-          {inactive ? (
-            <i class="bi bi-arrow-right-square-fill"></i>
-          ) : (
-            <i className="" ></i>
-          )}
+          <img src={`${inactive && darkMode ? logoCompDark : inactive ? logoComp : darkMode ? logoDark : logo}`} alt="chatbotAcecom"/>
         </div>
       </div>
 
@@ -105,27 +116,62 @@ const SideMenu = (props) => {
 
       <div className="divider"></div> */}
 
-      <div className="main-menu">
-        <div class="grid-container">
-          <div class="grid-item">
-              <div class="circle"></div> Modelo 1 
+      <div className={`${darkMode ? "dark" : ""} main-menu`}>
+        <div className="grid-container">
+          <div className={`${darkMode ? "dark" : ""} grid-item`}>
+              <div className="circle"></div> {`${inactive ? "" : "Modelo 1"}` }
           </div>
-          <div class="grid-item">
-              <div class="circle"></div> Modelo 2 
+          <div className={`${darkMode ? "dark" : ""} grid-item`}>
+              <div className="circle"></div> {`${inactive ? "" : "Modelo 2"}` }
           </div>
-          <div class="grid-item">
-              <div class="circle"></div> Modelo 3 
+          <div className={`${darkMode ? "dark" : ""} grid-item`}>
+              <div className="circle"></div> {`${inactive ? "" : "Modelo 3"}` }
           </div>  
-          <div class="grid-item">
-              <div class="circle"></div> Modelo 4 
+          <div className={`${darkMode ? "dark" : ""} grid-item`}>
+              <div className="circle"></div> {`${inactive ? "" : "Modelo 4"}` }
           </div>
-          <div class="grid-item">
-              <div class="circle"></div> Modelo 5 
+          <div className={`${darkMode ? "dark" : ""} grid-item`}>
+              <div className="circle"></div> {`${inactive ? "" : "Modelo 5"}` }
           </div>
-          <div class="grid-item">
-              <div class="circle"></div> Modelo 6 
-          </div>  
-      </div>
+        </div>
+        {inactive? (
+          <div className="switch-container">
+            <span style={{ color: darkMode ? "grey" : "white" }}>☀︎ </span>
+            <div className="switch-checkbox">
+              <label className="switch">
+                <input type="checkbox" onChange={() => {setDarkMode(!darkMode); dark = !darkMode}} alt="switchMode"/>
+                <span className={`${darkMode ? "dark" : ""} slider`}> </span>
+              </label>
+            </div>
+            <span style={{ color: darkMode ? "white" : "grey" }}> ☽</span>
+          </div>
+        ) : (
+          <div className="inferior">
+            <div className="mensaje">
+              <div className="comentarios">
+                <div className={`${darkMode ? "dark" : ""} burbuja`}>
+                  <p>Lorem ipsum dolor sit amet.</p>
+                </div>
+              </div>
+              <div className="switch-container">
+                <span style={{ color: darkMode ? "grey" : "white" }}>☀︎ </span>
+                <div className="switch-checkbox">
+                  <label className="switch">
+                    <input type="checkbox" onChange={() => {setDarkMode(!darkMode); dark = !darkMode}}/>
+                    <span className={`${darkMode ? "dark" : ""} slider`}> </span>
+                  </label>
+                </div>
+                <span style={{ color: darkMode ? "white" : "grey" }}> ☽</span>
+              </div>
+            </div>
+            <div className="lemur">
+              <img src={lemur} alt="lemur"/>
+            </div>
+          </div>
+        )}
+        
+        
+        {/*
         <ul>
           {menuItems.map((menuItem, index) => (
             <MenuItem
@@ -139,7 +185,7 @@ const SideMenu = (props) => {
                 if (inactive) {
                   setInactive(false);
                 }
-              }} */
+              }} 
             />
           ))}
 
@@ -162,10 +208,10 @@ const SideMenu = (props) => {
               </div>
               <span>Design</span>
             </a>
-          </li> */}
-        </ul>
+          </li> 
+        </ul>*/}
       </div>
-
+      {/*
       <div className="side-menu-footer">
         <div className="avatar">
           <img src={user} alt="user" />
@@ -174,9 +220,8 @@ const SideMenu = (props) => {
           <h5>Rizwan Khan</h5>
           <p>rizwankhan@gmail.com</p>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 };
-
 export default SideMenu;

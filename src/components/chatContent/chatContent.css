@@ -6,6 +6,7 @@
   max-width: 100%;
   /*border-right: 1px solid #ebe7fb;*/
 }
+/*
 .content__header {
   padding-bottom: 15px;
   border-bottom: 1px solid #ebe7fb;
@@ -25,7 +26,7 @@
 }
 .settings .btn-nobg {
   color: #000;
-}
+}*/
 .content__body {
   max-height: calc(100vh - calc(70vh / 2));
   overflow: auto;
@@ -51,19 +52,23 @@
   animation-fill-mode: both; /* or: backwards, both, none */
   animation-delay: 0.2s; /* or: Xms */
 }
-@keyframes showIn {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
+
+.chat__item.other img {
+  overflow: hidden;
+  border-radius: 50%;
+  min-width: 40px;
+  height: 40px;
 }
-.chat__item .avatar {
-  margin-right: 0px;
-  margin-left: 20px;
-  background: #fff;
-  padding: 1px;
+
+.chat__item .avatar{
+  background: #112B88;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+.chat__item .dark.avatar{
+  background: #132668;
 }
 
 /*mensajes derecha*/
@@ -75,9 +80,12 @@
   max-width: 80%;
   min-width: 200px;
 }
+.dark.chat__item__content {
+  background-color: #132668;
+  color: #FFFFFF;
+}
 .chat__item__content .chat__meta {
-  justify-content: space-between;
-  display: flex;
+  display: block;
   margin-top: 5px;
 }
 
@@ -93,6 +101,10 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
+.dark.chat__item__content_time {
+  color: rgba(255, 255, 255, 0.3);
+}
+
 /*hora de envio izquierda*/
 .chat__item__content_time_other {
   font-family: Poppins;
@@ -105,6 +117,10 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
+.dark.chat__item__content_time_other {
+  color: rgba(255, 255, 255, 0.3);
+}
+
 /*formato de los mensajes*/
 .chat__msg {
   user-select: none;
@@ -114,8 +130,8 @@
 }
 
 .chat__item.other {
+  display: flex;
   flex-direction: row-reverse;
-  transform-origin: left;
 }
 
 /*mensaje izquierda*/
@@ -123,13 +139,14 @@
   background-color: #E0E0E0;
   color: #000;
   border-radius: 10px 10px 10px 0;
-  max-width: 80%;
+  width: 80%;
 }
-.chat__item.other .avatar {
-  margin-right: 15px;
-  margin-left: 0px;
-  margin-bottom: 5px;
+
+.chat__item.other .dark.chat__item__content {
+  background-color: #363636;
+  color: #fff;
 }
+
 .chat__item.other .chat__item__content .chat__meta span {
   color: #d1d1d1;
 }
@@ -146,6 +163,11 @@
   border-radius: 8px;
   border: #FF0230;
 }
+
+.dark.sendNewMessage {
+  background-color: #363636;
+}
+
 .sendNewMessage button {
   width: 30px;
   height: 30px;
@@ -176,10 +198,8 @@
   outline: none;
   font-family: Poppins;
 }
-#sendMsgBtn {
-  background: #FF0230;
-  box-shadow: 4px 4px 25px rgba(42, 139, 242, 0.15), 2px 2px 25px rgba(42, 139, 242, 0.05), 4px 6px 10px rgba(42, 139, 242, 0.15);
-  color: #fff;
+.sendNewMessage input {
+  color: #FFFFFF;
 }
 
 #triangulo {

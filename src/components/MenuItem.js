@@ -10,7 +10,7 @@ const MenuItem = (props) => {
   const { name, subMenus, iconClassName, onClick, to, exact } = props;
   const [expand, setExpand] = useState(false);
 
-  return (
+  {/*return (
     <li onClick={props.onClick}>
       <Link
         exact
@@ -35,7 +35,7 @@ const MenuItem = (props) => {
         </ul>
       ) : null}
     </li>
-  );
+          );*/}
 };
 
 export default MenuItem;

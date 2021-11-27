@@ -1,8 +1,9 @@
 import React, { useState, createRef, useEffect } from "react";
-
+import botAcecom from "../../assets/botAcecom.png"
 import "./chatContent.css";
 import Avatar from "../chatList/Avatar";
 import ChatItem from "./ChatItem";
+import { dark } from "../SideMenu";
 
 const URL = "http://localhost:8000/nlp";
 
@@ -12,21 +13,19 @@ export default function ChatContent(props) {
     {
       key: 1,
       image:
-        "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
+        "../assets/botAcecom.png",
       type: "",
       msg: "Hi Tim, How are you?",
     },
     {
       key: 2,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
+      image: botAcecom,
       type: "other",
       msg: "I am fine.",
     },
     {
       key: 3,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
+      image: botAcecom,
       type: "other",
       msg: "What about you?",
     },
@@ -39,8 +38,7 @@ export default function ChatContent(props) {
     },
     {
       key: 5,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
+      image: botAcecom,
       type: "other",
       msg: "Finally. What's the plan? jnovnroewnvovb wivnwñoanviwbvoñvb weagte hyrnreeanyrteabae betablwvbrwivbwavbewvbelbvkjleab wubvwvwkjaoibu",
     },
@@ -53,14 +51,19 @@ export default function ChatContent(props) {
     },
     {
       key: 7,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU",
+      image: botAcecom,
       type: "other",
       msg: "I'm taliking about the tutorial",
     },
   ];
 
   const [state, setState] = useState({ chat: chatItms, msg: "" });
+  /*const [darkMode, setDarkMode] = useState(dark);
+
+  useEffect(() => {
+    props.onCollapse(darkMode);
+    setDarkMode(darkMode)
+  }, [darkMode]);*/
 
   var scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -153,6 +156,10 @@ export default function ChatContent(props) {
                 user={itm.type ? itm.type : "me"}
                 msg={itm.msg}
                 image={itm.image}
+                onCollapse={(dark) => {
+                  console.log(dark);
+                  //setDarkMode(dark);
+                }}
               />
               );
             }
@@ -163,6 +170,10 @@ export default function ChatContent(props) {
                   key={itm.key}
                   user={itm.type ? itm.type : "me"}
                   msg={itm.msg}
+                  onCollapse={(dark) => {
+                    console.log(dark);
+                    //setDarkMode(dark);
+                  }}
                   //image={itm.image}
                 />
                 );
@@ -173,14 +184,14 @@ export default function ChatContent(props) {
         </div>
       </div>
       <div className="content__footer">
-        <div className="sendNewMessage">
+        <div className={`${dark ? "dark" : ""} sendNewMessage`}>
           <input
             type="text"
             placeholder="Escribir mensaje aquí"
             onChange={onStateChange}
             value={state.msg}
           />
-          <button className="btnSendMsg" id="sendMsgBtn" onClick={sendQuery}>
+          <button className="btnSendMsg" onClick={sendQuery}>
             <i className="fa fa-paper-plane"><div id="triangulo"></div></i>
           </button>
         </div>
