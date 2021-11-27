@@ -58,12 +58,12 @@ export default function ChatContent(props) {
   ];
 
   const [state, setState] = useState({ chat: chatItms, msg: "" });
-  /*const [darkMode, setDarkMode] = useState(dark);
+  const [darkMode, setDarkMode] = useState(dark);
 
   useEffect(() => {
     props.onCollapse(darkMode);
-    setDarkMode(darkMode)
-  }, [darkMode]);*/
+    setDarkMode(dark)
+  }, [dark]);
 
   var scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
