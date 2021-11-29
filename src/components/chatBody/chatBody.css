@@ -2,9 +2,9 @@
   flex-grow: 1;
   background-color: #FFFFFF;
   border-radius: 10px;
-  padding: 15px 20px;
+  padding: 0px 20px;
   display: flex;
-  margin: 20px;
+  margin: 15px;
 }
 
 .dark.main__chatbody {

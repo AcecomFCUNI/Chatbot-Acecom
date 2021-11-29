@@ -19,7 +19,7 @@ body {
 .__main {
   max-width: 95%;
   background-color: #E0E0E0;
-  min-height: 93vh;
+  height: 93vh;
   width: 100%;
   border-radius: 10px;
   padding: 0px;
@@ -145,8 +145,9 @@ body{
   box-sizing: border-box;
   padding: 0px 50px;
   transition: width .2s ease-in;
-  align-content: center;
   overflow-y: scroll;
+  /*margin-top: 3.5vh;*/
+  /*bottom: 3.5vh;*/
 }
 
 .side-menu.inactive{
