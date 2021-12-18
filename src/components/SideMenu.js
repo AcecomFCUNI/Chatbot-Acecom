@@ -89,10 +89,10 @@ const SideMenu = (props) => {
   /* parte izquierda */
   return (
     <div className={`${darkMode ? "dark" : ""} side-menu ${inactive ? "inactive" : ""}`}>
-      {/* flecha de compresión */}
       <div className="fondo">
-        <img src={`${inactive && darkMode ? fondoCompDark : inactive ? fondoComp : darkMode ? fondoDark : fondo}`} alt="fondo"/>
+          <img src={`${inactive && darkMode ? fondoCompDark : inactive ? fondoComp : darkMode ? fondoDark : fondo}`} alt="fondo"/>
       </div>
+      {/* flecha de compresión */}
       <div onClick={() => setInactive(!inactive)} className="toggle-menu-btn">
         {/*inactive ? (
           <i class="bi bi-arrow-right-square-fill"></i>
@@ -100,130 +100,132 @@ const SideMenu = (props) => {
           <i className="" ></i>
         )*/}
       </div>
-      <div className="top-section">
-        {/*logo*/}
-        <div className="logo">
-          <img src={`${inactive && darkMode ? logoCompDark : inactive ? logoComp : darkMode ? logoDark : logo}`} alt="chatbotAcecom"/>
-        </div>
-      </div>
-
-      {/* <div className="search-controller">
-        <button className="search-btn">
-          <i class="bi bi-search"></i>
-        </button>
-
-        <input type="text" placeholder="search" />
-      </div>
-
-      <div className="divider"></div> */}
-
-      <div className={`${darkMode ? "dark" : ""} main-menu`}>
-        <div className="grid-container">
-          <div className={`${darkMode ? "dark" : ""} grid-item`}>
-              <div className="circle" style={{background: darkMode ? "#132668" : "#112B88"}}>
-                <img src={botAcecom}/>
-              </div> {`${inactive ? "" : "Modelo 1"}` }
-          </div>
-          <div className={`${darkMode ? "dark" : ""} grid-item`}>
-              <div className="circle"></div> {`${inactive ? "" : "Modelo 2"}` }
-          </div>
-          <div className={`${darkMode ? "dark" : ""} grid-item`}>
-              <div className="circle"></div> {`${inactive ? "" : "Modelo 3"}` }
-          </div>  
-          <div className={`${darkMode ? "dark" : ""} grid-item`}>
-              <div className="circle"></div> {`${inactive ? "" : "Modelo 4"}` }
-          </div>
-          <div className={`${darkMode ? "dark" : ""} grid-item`}>
-              <div className="circle"></div> {`${inactive ? "" : "Modelo 5"}` }
+      <div className="side-content">
+        <div className="top-section">
+          {/*logo*/}
+          <div className="logo">
+            <img src={`${inactive && darkMode ? logoCompDark : inactive ? logoComp : darkMode ? logoDark : logo}`} alt="chatbotAcecom"/>
           </div>
         </div>
-        {inactive? (
-          <div className="switch-container">
-            <span style={{ color: darkMode ? "grey" : "white" }}>☀︎ </span>
-            <div className="switch-checkbox">
-              <label className="switch">
-                <input type="checkbox" onChange={() => {setDarkMode(!darkMode); dark = !darkMode}} alt="switchMode"/>
-                <span className={`${darkMode ? "dark" : ""} slider`}> </span>
-              </label>
+
+        {/* <div className="search-controller">
+          <button className="search-btn">
+            <i class="bi bi-search"></i>
+          </button>
+
+          <input type="text" placeholder="search" />
+        </div>
+
+        <div className="divider"></div> */}
+
+        <div className={`${darkMode ? "dark" : ""} main-menu`}>
+          <div className="grid-container">
+            <div className={`${darkMode ? "dark" : ""} grid-item`}>
+                <div className="circle" style={{background: darkMode ? "#132668" : "#112B88"}}>
+                  <img src={botAcecom}/>
+                </div> {`${inactive ? "" : "Modelo 1"}` }
             </div>
-            <span style={{ color: darkMode ? "white" : "grey" }}> ☽</span>
-          </div>
-        ) : (
-          <div className="inferior">
-            <div className="mensaje">
-              <div className="comentarios">
-                <div className={`${darkMode ? "dark" : ""} burbuja`}>
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-              </div>
-              <div className="switch-container">
-                <span style={{ color: darkMode ? "grey" : "white" }}>☀︎ </span>
-                <div className="switch-checkbox">
-                  <label className="switch">
-                    <input type="checkbox" onChange={() => {setDarkMode(!darkMode); dark = !darkMode}}/>
-                    <span className={`${darkMode ? "dark" : ""} slider`}> </span>
-                  </label>
-                </div>
-                <span style={{ color: darkMode ? "white" : "grey" }}> ☽</span>
-              </div>
+            <div className={`${darkMode ? "dark" : ""} grid-item`}>
+                <div className="circle"></div> {`${inactive ? "" : "Modelo 2"}` }
             </div>
-            <div className="lemur">
-              <img src={lemur} alt="lemur"/>
+            <div className={`${darkMode ? "dark" : ""} grid-item`}>
+                <div className="circle"></div> {`${inactive ? "" : "Modelo 3"}` }
+            </div>  
+            <div className={`${darkMode ? "dark" : ""} grid-item`}>
+                <div className="circle"></div> {`${inactive ? "" : "Modelo 4"}` }
+            </div>
+            <div className={`${darkMode ? "dark" : ""} grid-item`}>
+                <div className="circle"></div> {`${inactive ? "" : "Modelo 5"}` }
             </div>
           </div>
-        )}
-        
-        
-        {/*
-        <ul>
-          {menuItems.map((menuItem, index) => (
+          {inactive? (
+            <div className="switch-container">
+              <span style={{ color: darkMode ? "grey" : "white" }}>☀︎ </span>
+              <div className="switch-checkbox">
+                <label className="switch">
+                  <input type="checkbox" onChange={() => {setDarkMode(!darkMode); dark = !darkMode}} alt="switchMode"/>
+                  <span className={`${darkMode ? "dark" : ""} slider`}> </span>
+                </label>
+              </div>
+              <span style={{ color: darkMode ? "white" : "grey" }}> ☽</span>
+            </div>
+          ) : (
+            <div className="inferior">
+              <div className="mensaje">
+                <div className="comentarios">
+                  <div className={`${darkMode ? "dark" : ""} burbuja`}>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                  </div>
+                </div>
+                <div className="switch-container">
+                  <span style={{ color: darkMode ? "grey" : "white" }}>☀︎ </span>
+                  <div className="switch-checkbox">
+                    <label className="switch">
+                      <input type="checkbox" onChange={() => {setDarkMode(!darkMode); dark = !darkMode}}/>
+                      <span className={`${darkMode ? "dark" : ""} slider`}> </span>
+                    </label>
+                  </div>
+                  <span style={{ color: darkMode ? "white" : "grey" }}> ☽</span>
+                </div>
+              </div>
+              <div className="lemur">
+                <img src={lemur} alt="lemur"/>
+              </div>
+            </div>
+          )}
+          
+          
+          {/*
+          <ul>
+            {menuItems.map((menuItem, index) => (
+              <MenuItem
+                /*key={index}*/
+                /*name={menuItem.name}*/
+                /*exact={menuItem.exact}
+                to={menuItem.to}
+                subMenus={menuItem.subMenus || []}
+                iconClassName={menuItem.iconClassName}
+                onClick={(e) => {
+                  if (inactive) {
+                    setInactive(false);
+                  }
+                }} 
+              />
+            ))}
+
+            {/*} <li>
+              <a className="menu-item">
+                <div className="menu-icon">
+                  <i class="bi bi-speedometer2"></i>
+                </div>
+                <span>Dashboard</span>
+              </a>
+            </li>
             <MenuItem
-              /*key={index}*/
-              /*name={menuItem.name}*/
-              /*exact={menuItem.exact}
-              to={menuItem.to}
-              subMenus={menuItem.subMenus || []}
-              iconClassName={menuItem.iconClassName}
-              onClick={(e) => {
-                if (inactive) {
-                  setInactive(false);
-                }
-              }} 
-            />
-          ))}
-
-          {/*} <li>
-            <a className="menu-item">
-              <div className="menu-icon">
-                <i class="bi bi-speedometer2"></i>
-              </div>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <MenuItem
-            name={"Content"}
-            subMenus={[{ name: "Courses" }, { name: "Videos" }]}
-            />*/}
-          {/*<li>
-            <a className="menu-item">
-              <div className="menu-icon">
-                <i class="bi bi-vector-pen"></i>
-              </div>
-              <span>Design</span>
-            </a>
-          </li> 
-        </ul>*/}
+              name={"Content"}
+              subMenus={[{ name: "Courses" }, { name: "Videos" }]}
+              />*/}
+            {/*<li>
+              <a className="menu-item">
+                <div className="menu-icon">
+                  <i class="bi bi-vector-pen"></i>
+                </div>
+                <span>Design</span>
+              </a>
+            </li> 
+          </ul>*/}
+        </div>
+        {/*
+        <div className="side-menu-footer">
+          <div className="avatar">
+            <img src={user} alt="user" />
+          </div>
+          <div className="user-info">
+            <h5>Rizwan Khan</h5>
+            <p>rizwankhan@gmail.com</p>
+          </div>
+        </div>*/}
       </div>
-      {/*
-      <div className="side-menu-footer">
-        <div className="avatar">
-          <img src={user} alt="user" />
-        </div>
-        <div className="user-info">
-          <h5>Rizwan Khan</h5>
-          <p>rizwankhan@gmail.com</p>
-        </div>
-      </div>*/}
     </div>
   );
 };
