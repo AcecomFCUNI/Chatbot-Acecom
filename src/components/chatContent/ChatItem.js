@@ -1,10 +1,14 @@
 import React from "react";
-import Avatar from "../chatList/Avatar";
+import moment from 'moment';
+import 'moment/locale/es'
+
 import { dark } from "../SideMenu";
+
+moment.locale('es')
 
 export default function ChatItem(props) {
 
-  if (props.user == "other"){
+  if (props.user === "other"){
     return (
       <div
         style={{ animationDelay: `0.8s` }}
@@ -14,10 +18,10 @@ export default function ChatItem(props) {
           <div className={`${dark ? "dark" : ""} chat__item__content`}>
             <div className="chat__msg">{props.msg}</div>
           </div>
-          <div className={`${dark ? "dark" : ""} chat__item__content_time_other`}>16 mins ago</div>  
+          <div className={`${dark ? "dark" : ""} chat__item__content_time_other`}>{moment(props.timecreate).fromNow()}</div>  
         </div>
         <div className={`${dark ? "dark" : ""} avatar`}>
-          <img src={props.image}/>
+          <img alt="bot" src={props.image}/>
         </div>
       </div>
     );
@@ -32,7 +36,7 @@ export default function ChatItem(props) {
           <div className={`${dark ? "dark" : ""} chat__item__content`}>
             <div className="chat__msg">{props.msg}</div>
           </div>
-          <div className={`${dark ? "dark" : ""} chat__item__content_time`}>16 mins ago</div>  
+          <div className={`${dark ? "dark" : ""} chat__item__content_time`}>{moment(props.timecreate).fromNow()}</div>  
         </div>
       </div>
     );
