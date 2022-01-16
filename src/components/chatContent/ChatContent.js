@@ -1,99 +1,57 @@
 import React, { useState, createRef, useEffect } from "react";
+import LinearProgress from '@mui/material/LinearProgress';
+
 import botAcecom from "../../assets/botAcecom.png"
 import "./chatContent.css";
-import Avatar from "../chatList/Avatar";
 import ChatItem from "./ChatItem";
 import { dark } from "../SideMenu";
 
-const URL = "http://localhost:8000/nlp";
+const URL = "https://chatbot-acecom.herokuapp.com/nlp"; //"http://localhost:8000/nlp";
+
+
+
+let chatItms = [
+  {
+    key: 1,
+    image: botAcecom,
+    type: "other",
+    msg: "Hola, comencemos con nuestra conversación!",
+    timecreate: new Date()
+  }
+];
+
 
 export default function ChatContent(props) {
-  var messagesEndRef = createRef(null);
-  var chatItms = [
-    {
-      key: 1,
-      image:
-        "../assets/botAcecom.png",
-      type: "",
-      msg: "Hi Tim, How are you?",
-    },
-    {
-      key: 2,
-      image: botAcecom,
-      type: "other",
-      msg: "I am fine.",
-    },
-    {
-      key: 3,
-      image: botAcecom,
-      type: "other",
-      msg: "What about you?",
-    },
-    {
-      key: 4,
-      image:
-        "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-      type: "",
-      msg: "Awesome these days.",
-    },
-    {
-      key: 5,
-      image: botAcecom,
-      type: "other",
-      msg: "Finally. What's the plan? jnovnroewnvovb wivnwñoanviwbvoñvb weagte hyrnreeanyrteabae betablwvbrwivbwavbewvbelbvkjleab wubvwvwkjaoibu",
-    },
-    {
-      key: 6,
-      image:
-        "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-      type: "",
-      msg: "what plan mate?",
-    },
-    {
-      key: 7,
-      image: botAcecom,
-      type: "other",
-      msg: "I'm taliking about the tutorial",
-    },
-  ];
+  let messagesEndRef = createRef(null);
 
   const [state, setState] = useState({ chat: chatItms, msg: "" });
   const [darkMode, setDarkMode] = useState(dark);
+  let [loading, setLoading] = useState(false);
 
   useEffect(() => {
     props.onCollapse(darkMode);
     setDarkMode(dark)
   }, [dark]);
 
-  var scrollToBottom = () => {
+  useEffect(() => {
+    scrollToBottom();
+  }, [state.chat])
+
+  let scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      if (e.keyCode == 13) {
-        if (state.msg != "") {
-          chatItms.push({
-            key: 1,
-            type: "",
-            msg: state.msg,
-            image:
-              "https://pbs.twimg.com/profile_images/1116431270697766912/-NfnQHvh_400x400.jpg",
-          });
-          setState({ ...state, chat: [...chatItms] });
-          scrollToBottom();
-          setState({ ...state, msg: "" });
-        }
-      }
-    });
-    scrollToBottom();
-  }, []);
+  let handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      dialogProcess();
+    }
+  }
 
-  var onStateChange = (e) => {
+  let onStateChange = (e) => {
     setState({ ...state, msg: e.target.value });
   };
 
-  var executeQuery = async () => {
+  let executeQuery = async () => {
     let payload = {
       modelId: "3",
       query: state.msg,
@@ -112,10 +70,29 @@ export default function ChatContent(props) {
     return response.json();
   };
 
-  var sendQuery = () => {
+  let dialogProcess = () => {
+
+    chatItms.push({
+      key: chatItms.length + 1,
+      type: "",
+      msg: state.msg,
+      image: "",
+      timecreate: new Date()
+    });
+    setState({ msg: "", chat: [...chatItms] });
+    setLoading(true);
+
     executeQuery()
-      .then((data) => {
-        console.log("IMPRIMIENDO", data);
+      .then((response) => {
+        chatItms.push({
+          key: chatItms.length + 1,
+          type: "other",
+          msg: response.data,
+          image: botAcecom,
+          timecreate: new Date()
+        });
+        setState({ msg: "", chat: [...chatItms] });
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -124,61 +101,49 @@ export default function ChatContent(props) {
 
   return (
     <div className="main__chatcontent">
-      {/*<div className="content__header">
-        <div className="blocks">
-          <div className="current-chatting-user">
-            <Avatar
-              isOnline="active"
-              image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU"
-            />
-            <p>Tim Hover</p>
-          </div>
-        </div>
-
-        <div className="blocks">
-          <div className="settings">
-            <button className="btn-nobg">
-              <i className="fa fa-cog"></i>
-            </button>
-          </div>
-        </div>
-      </div>*/}
+      {
+            loading ? (
+              <LinearProgress />
+            ) :
+              (
+                ''
+              )
+          }
       <div className="content__body">
         <div className="chat__items">
-          {//Cambio realizado
-          }
           {state.chat.map((itm, index) => {
-            if (itm.type == "other"){
-              return (
-              <ChatItem
-                animationDelay={index + 2}
-                key={itm.key}
-                user={itm.type ? itm.type : "me"}
-                msg={itm.msg}
-                image={itm.image}
-                onCollapse={(dark) => {
-                  console.log(dark);
-                  //setDarkMode(dark);
-                }}
-              />
-              );
-            }
-            else{
+            if (itm.type === "other") {
               return (
                 <ChatItem
                   animationDelay={index + 2}
                   key={itm.key}
-                  user={itm.type ? itm.type : "me"}
+                  user={itm.type}
                   msg={itm.msg}
+                  timecreate={itm.timecreate}
+                  image={itm.image}
                   onCollapse={(dark) => {
                     console.log(dark);
                     //setDarkMode(dark);
                   }}
-                  //image={itm.image}
                 />
-                );
+              );
             }
-            
+            else {
+              return (
+                <ChatItem
+                  animationDelay={index + 2}
+                  key={itm.key}
+                  user={itm.type}
+                  msg={itm.msg}
+                  timecreate={itm.timecreate}
+                  onCollapse={(dark) => {
+                    console.log(dark);
+                    //setDarkMode(dark);
+                  }}
+                />
+              );
+            }
+
           })}
           <div ref={messagesEndRef} />
         </div>
@@ -189,10 +154,11 @@ export default function ChatContent(props) {
             type="text"
             placeholder="Escribir mensaje aquí"
             onChange={onStateChange}
+            onKeyDown={handleKeyDown}
             value={state.msg}
           />
-          <button className="btnSendMsg" onClick={sendQuery}>
-            <i className="fa fa-paper-plane"><div id="triangulo"></div></i>
+          <button className="btnSendMsg" onClick={dialogProcess}>
+            <i className="fa fa-paper-plane"><div id="triangulo" /></i>
           </button>
         </div>
       </div>

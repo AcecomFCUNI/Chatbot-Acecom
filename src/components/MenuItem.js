@@ -1,10 +1,6 @@
 import React, { useRef, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
-/**
- * @author
- * @function MenuItem
- **/
 
 const MenuItem = (props) => {
   const { name, subMenus, iconClassName, onClick, to, exact } = props;
