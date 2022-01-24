@@ -1,14 +1,9 @@
 import React, { useState, createRef, useEffect } from "react";
-import LinearProgress from '@mui/material/LinearProgress';
+import LinearProgress from "@mui/material/LinearProgress";
 
-import botAcecom from "../../assets/botAcecom.png"
-import "./chatContent.css";
+import botAcecom from "../assets/botAcecom.png";
 import ChatItem from "./ChatItem";
-import { dark } from "../SideMenu";
-
-const URL = "https://chatbot-acecom.herokuapp.com/nlp"; //"http://localhost:8000/nlp";
-
-
+import { HEROKU_BACKEND } from "./../config";
 
 let chatItms = [
   {
@@ -16,36 +11,27 @@ let chatItms = [
     image: botAcecom,
     type: "other",
     msg: "Hola, comencemos con nuestra conversación!",
-    timecreate: new Date()
-  }
+    timecreate: new Date(),
+  },
 ];
 
-
 export default function ChatContent(props) {
+  const { darkMode } = props;
   let messagesEndRef = createRef(null);
 
   const [state, setState] = useState({ chat: chatItms, msg: "" });
-  const [darkMode, setDarkMode] = useState(dark);
   let [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    props.onCollapse(darkMode);
-    setDarkMode(dark)
-  }, [dark]);
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [state.chat])
-
-  let scrollToBottom = () => {
+    // scrollToBottom
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-  };
+  }, [state.chat, messagesEndRef]);
 
   let handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       dialogProcess();
     }
-  }
+  };
 
   let onStateChange = (e) => {
     setState({ ...state, msg: e.target.value });
@@ -56,14 +42,14 @@ export default function ChatContent(props) {
       modelId: "3",
       query: state.msg,
     };
-    const response = await fetch(URL, {
+    const response = await fetch(HEROKU_BACKEND, {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": "true"
+        "Access-Control-Allow-Credentials": "true",
       },
       body: JSON.stringify(payload),
     });
@@ -71,13 +57,12 @@ export default function ChatContent(props) {
   };
 
   let dialogProcess = () => {
-
     chatItms.push({
       key: chatItms.length + 1,
       type: "",
       msg: state.msg,
       image: "",
-      timecreate: new Date()
+      timecreate: new Date(),
     });
     setState({ msg: "", chat: [...chatItms] });
     setLoading(true);
@@ -89,7 +74,7 @@ export default function ChatContent(props) {
           type: "other",
           msg: response.data,
           image: botAcecom,
-          timecreate: new Date()
+          timecreate: new Date(),
         });
         setState({ msg: "", chat: [...chatItms] });
         setLoading(false);
@@ -101,14 +86,7 @@ export default function ChatContent(props) {
 
   return (
     <div className="main__chatcontent">
-      {
-            loading ? (
-              <LinearProgress />
-            ) :
-              (
-                ''
-              )
-          }
+      {loading ? <LinearProgress /> : ""}
       <div className="content__body">
         <div className="chat__items">
           {state.chat.map((itm, index) => {
@@ -121,14 +99,10 @@ export default function ChatContent(props) {
                   msg={itm.msg}
                   timecreate={itm.timecreate}
                   image={itm.image}
-                  onCollapse={(dark) => {
-                    console.log(dark);
-                    //setDarkMode(dark);
-                  }}
+                  darkMode={darkMode}
                 />
               );
-            }
-            else {
+            } else {
               return (
                 <ChatItem
                   animationDelay={index + 2}
@@ -136,20 +110,16 @@ export default function ChatContent(props) {
                   user={itm.type}
                   msg={itm.msg}
                   timecreate={itm.timecreate}
-                  onCollapse={(dark) => {
-                    console.log(dark);
-                    //setDarkMode(dark);
-                  }}
+                  darkMode={darkMode}
                 />
               );
             }
-
           })}
           <div ref={messagesEndRef} />
         </div>
       </div>
       <div className="content__footer">
-        <div className={`${dark ? "dark" : ""} sendNewMessage`}>
+        <div className={`${darkMode ? "dark" : ""} sendNewMessage`}>
           <input
             type="text"
             placeholder="Escribir mensaje aquí"
@@ -158,7 +128,9 @@ export default function ChatContent(props) {
             value={state.msg}
           />
           <button className="btnSendMsg" onClick={dialogProcess}>
-            <i className="fa fa-paper-plane"><div id="triangulo" /></i>
+            <i className="fa fa-paper-plane">
+              <div id="triangulo" />
+            </i>
           </button>
         </div>
       </div>
