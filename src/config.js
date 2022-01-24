@@ -1,4 +1,4 @@
-let HEROKU_BACKEND = "https://chatbot-acecom.herokuapp.com/nlp";
-let LOCAL_BACKEND = "http://localhost:8000/nlp";
+let HEROKU_BACKEND = "https://chatbot-acecom.herokuapp.com/";
+let LOCAL_BACKEND = "http://localhost:8000/";
 
 export { HEROKU_BACKEND, LOCAL_BACKEND };

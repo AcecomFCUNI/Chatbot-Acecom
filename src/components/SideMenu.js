@@ -8,56 +8,51 @@ import fondoDark from "../assets/fondoDark.png";
 import fondoComp from "../assets/fondoComp.png";
 import fondoCompDark from "../assets/fondoCompDark.png";
 import lemur from "../assets/lemur.png";
-import tensorflow from "../assets/tensorflow.png";
-import pytorch from "../assets/pytorch.png";
-import dialogpt from "../assets/dialogpt.png";
-import bow from "../assets/bow.png";
-import blenderbot from "../assets/blenderbot.png";
+import { HEROKU_BACKEND, LOCAL_BACKEND } from "./../config";
 
-const menuItems = [
-  {
-    name: "Tensorflow",
-    image: tensorflow,
-    message: "Esta interactuando con el tutorial oficial de Tensorflow",
-    selected: false,
-  },
-  {
-    name: "Pytorch",
-    image: pytorch,
-    message: "Esta interactuando con el tutorial oficial de Pytorch",
-    selected: false,
-  },
-  {
-    name: "BoW",
-    image: bow,
-    message: "Esta interactuando con un modelo que usa Bag Of Words",
-    selected: false,
-  },
-  {
-    name: "DialoGPT",
-    image: dialogpt,
-    message:
-      "Esta interactuando con DialoGPT-medium-joshua, alojado en HuggingFace",
-    selected: false,
-  },
-  {
-    name: "Blender Bot",
-    image: blenderbot,
-    message: "Esta interactuando con Blender Bot, el chatbot más avanzado!",
-    selected: false,
-  },
-];
+let getInfo = async () => {
+  const response = await fetch(HEROKU_BACKEND + "info", {
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
+    },
+  });
+  return response.json();
+};
 
 const SideMenu = (props) => {
-  const { changeDarkMode, changeInactive, darkMode, inactive } = props;
+  const { changeDarkMode, changeInactive, changeModelId, darkMode, inactive } =
+    props;
 
+  const [menuItems, setMenuItems] = useState([]);
   const [modelName, setModelName] = useState(null);
-  const [message, setMessage] = useState(null);
+  const [message, setInfoMessage] = useState(null);
+
+  useEffect(() => {
+    getInfo()
+      .then((response) => {
+        let info = response.info.map((value) => ({
+          ...value,
+          selected: false,
+        }));
+        setMenuItems(info);
+      })
+      .catch((error) => {
+        console.log("Error obteniendo info del backend: ", error);
+      });
+  }, []);
 
   useEffect(() => {
     const indexModel = menuItems.map((e) => e.name).indexOf(modelName);
-    if (indexModel !== -1) setMessage(menuItems[indexModel].message);
-  }, [modelName]);
+    if (indexModel !== -1) {
+      setInfoMessage(menuItems[indexModel].message);
+      changeModelId(String(indexModel + 1));
+    }
+  }, [modelName, menuItems, changeModelId]);
 
   let selectModelChat = (e) => {
     for (
@@ -116,10 +111,11 @@ const SideMenu = (props) => {
           <div className="grid-container">
             {menuItems.map((menuItem, index) => (
               <div
+                aria-disabled={menuItems[index].blocked}
                 key={index}
                 className={`${darkMode ? "dark" : ""} grid-item ${
-                  menuItems[index].selected ? "active" : ""
-                }`}
+                  menuItems[index].blocked ? "is-disabled" : ""
+                } ${menuItems[index].selected ? "active" : ""}`}
                 onClick={(e) => {
                   setModelName(menuItem.name);
                   selectModelChat(e);

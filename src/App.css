@@ -263,8 +263,18 @@ body {
   grid-gap: 7px 7px;
 }
 
+.side-menu .main-menu .grid-container .is-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .side-menu.inactive .main-menu .grid-container {
   grid-template-columns: auto;
+}
+
+.side-menu.inactive .main-menu .grid-container .is-disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .side-menu .main-menu .grid-item {

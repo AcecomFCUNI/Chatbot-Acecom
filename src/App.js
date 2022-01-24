@@ -6,6 +6,7 @@ import SideMenu from "./components/SideMenu";
 function App() {
   const [inactive, setInactive] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [modelId, setModelId] = useState(null);
   return (
     <div className={`${darkMode ? "dark" : ""} __main`}>
       <SideMenu
@@ -17,9 +18,15 @@ function App() {
         changeInactive={(i) => {
           setInactive(i);
         }}
+        changeModelId={(id) => {
+          setModelId(id);
+        }}
       />
       <div className={`container ${inactive ? "inactive" : ""}`} />
-      <ChatBody darkMode={darkMode} />
+      <ChatBody
+        modelId={modelId}
+        darkMode={darkMode}
+      />
     </div>
   );
 }

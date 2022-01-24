@@ -3,7 +3,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 
 import botAcecom from "../assets/botAcecom.png";
 import ChatItem from "./ChatItem";
-import { HEROKU_BACKEND } from "./../config";
+import { HEROKU_BACKEND, LOCAL_BACKEND } from "./../config";
 
 let chatItms = [
   {
@@ -16,7 +16,7 @@ let chatItms = [
 ];
 
 export default function ChatContent(props) {
-  const { darkMode } = props;
+  const { darkMode, modelId } = props;
   let messagesEndRef = createRef(null);
 
   const [state, setState] = useState({ chat: chatItms, msg: "" });
@@ -39,10 +39,10 @@ export default function ChatContent(props) {
 
   let executeQuery = async () => {
     let payload = {
-      modelId: "3",
+      modelId,
       query: state.msg,
     };
-    const response = await fetch(HEROKU_BACKEND, {
+    const response = await fetch(HEROKU_BACKEND + "nlp", {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
@@ -65,23 +65,35 @@ export default function ChatContent(props) {
       timecreate: new Date(),
     });
     setState({ msg: "", chat: [...chatItms] });
-    setLoading(true);
 
-    executeQuery()
-      .then((response) => {
-        chatItms.push({
-          key: chatItms.length + 1,
-          type: "other",
-          msg: response.data,
-          image: botAcecom,
-          timecreate: new Date(),
+    if (modelId) {
+      setLoading(true);
+
+      executeQuery()
+        .then((response) => {
+          chatItms.push({
+            key: chatItms.length + 1,
+            type: "other",
+            msg: response.data,
+            image: botAcecom,
+            timecreate: new Date(),
+          });
+          setState({ msg: "", chat: [...chatItms] });
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
         });
-        setState({ msg: "", chat: [...chatItms] });
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
+    } else {
+      chatItms.push({
+        key: chatItms.length + 1,
+        type: "other",
+        msg: "Necesita seleccionar un modelo!!",
+        image: botAcecom,
+        timecreate: new Date(),
       });
+      setState({ msg: "", chat: [...chatItms] });
+    }
   };
 
   return (
