@@ -14,7 +14,7 @@ INFO = [
         "image": "https://www.pngitem.com/pimgs/m/31-310639_pytorch-logo-png-transparent-png.png",
         "message": "Esta interactuando con el tutorial oficial de Pytorch, que además ha sido quantizado",
         "running": False,
-        "blocked": False,
+        "blocked": True,
     },
     {
         "name": "BoW",
