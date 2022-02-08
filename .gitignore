@@ -1,8 +1,10 @@
 .vscode
-Backend/request.http
-Backend/model/chatbotN03/data.pth
+__pycache__/
 *.h5
-Backend/model/chatbotN01/cornell_movie_dialogs_corpus
+Backend/
+Frontend/
+requeriments.txt
+model/
 venv
 *.tar
 
