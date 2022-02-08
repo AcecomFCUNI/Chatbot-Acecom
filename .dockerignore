@@ -1,0 +1,9 @@
+Frontend
+ChatBot
+venv_chatbot
+README.md
+node_modules
+.vscode
+*/.gitignore
+.gitignore
+*/__pycache__
